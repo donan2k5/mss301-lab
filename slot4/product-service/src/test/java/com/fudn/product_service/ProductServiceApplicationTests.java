@@ -47,7 +47,7 @@ class ProductServiceApplicationTests {
 				"This is a test product",
 				BigDecimal.valueOf(19.99));
 
-		mockMvc.perform(post("/api/product")
+		mockMvc.perform(post("/api/products")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(productRequest)))
 				.andExpect(status().isCreated())
