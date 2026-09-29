@@ -1,5 +1,6 @@
 package com.fudn.orderservice;
 
+import com.fudn.orderservice.stub.InventoryStubs;
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,10 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.testcontainers.containers.MySQLContainer;
+import org.wiremock.spring.EnableWireMock;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@EnableWireMock
 class OrderServiceApplicationTests {
 
     @ServiceConnection
@@ -40,6 +43,8 @@ class OrderServiceApplicationTests {
                 }
                 """;
 
+        InventoryStubs.stubInventoryCall("iphone_15", 1);
+
         var responseBodyString = RestAssured.given()
                 .contentType("application/json")
                 .body(submitOrderJson)
@@ -52,5 +57,26 @@ class OrderServiceApplicationTests {
                 .body().asString();
 
         assertThat(responseBodyString, Matchers.is("Order Placed Successfully"));
+    }
+
+    @Test
+    void shouldRejectOrderWhenOutOfStock() {
+        String submitOrderJson = """
+                {
+                     "skuCode": "iphone_15",
+                     "price": 1000,
+                     "quantity": 101
+                }
+                """;
+
+        InventoryStubs.stubInventoryCall("iphone_15", 101, false);
+
+        RestAssured.given()
+                .contentType("application/json")
+                .body(submitOrderJson)
+                .when()
+                .post("/api/order")
+                .then()
+                .statusCode(500);
     }
 }
