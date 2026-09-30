@@ -77,6 +77,6 @@ class OrderServiceApplicationTests {
                 .when()
                 .post("/api/order")
                 .then()
-                .statusCode(500);
+                .statusCode(409);
     }
 }
