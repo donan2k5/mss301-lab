@@ -2,11 +2,15 @@ package com.fudn.gateway;
 
 import com.sun.net.httpserver.HttpServer;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -19,6 +23,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class GatewayRoutesTests {
@@ -77,7 +82,18 @@ class GatewayRoutesTests {
     @LocalServerPort
     private int port;
 
+    @MockitoBean
+    private JwtDecoder jwtDecoder;
+
     private final HttpClient client = HttpClient.newHttpClient();
+
+    @BeforeEach
+    void mockJwt() {
+        when(jwtDecoder.decode("test-token")).thenReturn(Jwt.withTokenValue("test-token")
+                .header("alg", "none")
+                .claim("sub", "gateway-route-test")
+                .build());
+    }
 
     @Test
     void routesProducts() throws Exception {
@@ -113,6 +129,7 @@ class GatewayRoutesTests {
         var request = HttpRequest.newBuilder(URI.create("http://localhost:" + port + path))
                 .method(method, body == null ? HttpRequest.BodyPublishers.noBody()
                         : HttpRequest.BodyPublishers.ofString(body))
+                .header("Authorization", "Bearer test-token")
                 .header("Content-Type", "application/json")
                 .build();
         return client.send(request, HttpResponse.BodyHandlers.ofString());
