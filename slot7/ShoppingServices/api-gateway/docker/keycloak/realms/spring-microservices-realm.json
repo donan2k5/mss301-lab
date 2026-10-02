@@ -1,0 +1,5 @@
+{
+  "realm": "spring-microservices-realm",
+  "enabled": true,
+  "clients": []
+}
