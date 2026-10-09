@@ -63,6 +63,28 @@ public class BookingService {
     }
 
     @Transactional
+    public BookingResponse cancelBooking(Long bookingId, Long customerId) {
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(() -> ApiException.notFound("Booking not found with id: " + bookingId));
+        if (!booking.getCustomerId().equals(customerId)) {
+            throw ApiException.forbidden("You are not allowed to cancel this booking");
+        }
+        if (booking.getBookingStatus() != BookingStatus.CONFIRMED) {
+            throw ApiException.conflict("Only confirmed bookings can be cancelled");
+        }
+
+        LocalDateTime cancellationDeadline = LocalDateTime.now().plusHours(2);
+        boolean tooLateToCancel = booking.getDetails().stream()
+                .anyMatch(detail -> detail.getShowtimeStart().isBefore(cancellationDeadline));
+        if (tooLateToCancel) {
+            throw ApiException.badRequest("A booking can only be cancelled at least 2 hours before showtime");
+        }
+
+        booking.setBookingStatus(BookingStatus.CANCELLED);
+        return BookingResponse.from(bookingRepository.save(booking));
+    }
+
+    @Transactional
     public BookingResponse create(Long customerId, CreateBookingRequest request) {
         Map<String, ShowtimeResponse> showtimeCache = new HashMap<>();
         Map<String, Set<String>> bookedSeatCache = new HashMap<>();
