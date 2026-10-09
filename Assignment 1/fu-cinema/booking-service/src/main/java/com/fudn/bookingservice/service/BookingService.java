@@ -33,6 +33,9 @@ import java.util.Set;
 @Transactional(readOnly = true)
 public class BookingService {
 
+    private static final String ROLE_ADMIN = "ADMIN";
+    private static final long CANCEL_BEFORE_HOURS = 2;
+
     private final BookingRepository bookingRepository;
     private final BookingDetailRepository bookingDetailRepository;
     private final MovieClient movieClient;
@@ -53,31 +56,30 @@ public class BookingService {
                 .stream().map(BookingResponse::from).toList();
     }
 
-    public BookingResponse getBookingDetail(Long bookingId, Long userId, String role) {
-        Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> ApiException.notFound("Booking not found with id: " + bookingId));
-        if (!"ADMIN".equals(role) && !booking.getCustomerId().equals(userId)) {
-            throw ApiException.forbidden("You are not allowed to view this booking");
-        }
-        return BookingResponse.from(booking);
+    public List<BookingResponse> getAll() {
+        return bookingRepository.findAllByOrderByBookingDateDesc()
+                .stream().map(BookingResponse::from).toList();
+    }
+
+    public BookingResponse getById(Long bookingId, Long userId, String role) {
+        return BookingResponse.from(findAccessible(bookingId, userId, role));
     }
 
     @Transactional
-    public BookingResponse cancelBooking(Long bookingId, Long customerId) {
-        Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> ApiException.notFound("Booking not found with id: " + bookingId));
-        if (!booking.getCustomerId().equals(customerId)) {
-            throw ApiException.forbidden("You are not allowed to cancel this booking");
-        }
+    public BookingResponse cancel(Long bookingId, Long userId, String role) {
+        Booking booking = findAccessible(bookingId, userId, role);
         if (booking.getBookingStatus() != BookingStatus.CONFIRMED) {
-            throw ApiException.conflict("Only confirmed bookings can be cancelled");
+            throw ApiException.badRequest("Only CONFIRMED bookings can be cancelled");
         }
 
-        LocalDateTime cancellationDeadline = LocalDateTime.now().plusHours(2);
-        boolean tooLateToCancel = booking.getDetails().stream()
-                .anyMatch(detail -> detail.getShowtimeStart().isBefore(cancellationDeadline));
-        if (tooLateToCancel) {
-            throw ApiException.badRequest("A booking can only be cancelled at least 2 hours before showtime");
+        if (!ROLE_ADMIN.equals(role)) {
+            LocalDateTime deadline = LocalDateTime.now().plusHours(CANCEL_BEFORE_HOURS);
+            boolean tooLate = booking.getDetails().stream()
+                    .anyMatch(detail -> detail.getShowtimeStart().isBefore(deadline));
+            if (tooLate) {
+                throw ApiException.badRequest("Booking can only be cancelled at least "
+                        + CANCEL_BEFORE_HOURS + " hours before the showtime");
+            }
         }
 
         booking.setBookingStatus(BookingStatus.CANCELLED);
@@ -164,5 +166,14 @@ public class BookingService {
             throw ApiException.badRequest("Seat " + seat + " does not exist in room " + showtime.roomName()
                     + " (rows A-" + lastRow + ", seats 1-" + showtime.seatsPerRow() + ")");
         }
+    }
+
+    private Booking findAccessible(Long bookingId, Long userId, String role) {
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(() -> ApiException.notFound("Booking not found with id: " + bookingId));
+        if (!ROLE_ADMIN.equals(role) && !booking.getCustomerId().equals(userId)) {
+            throw ApiException.forbidden("You can only access your own bookings");
+        }
+        return booking;
     }
 }
