@@ -53,6 +53,15 @@ public class BookingService {
                 .stream().map(BookingResponse::from).toList();
     }
 
+    public BookingResponse getBookingDetail(Long bookingId, Long userId, String role) {
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(() -> ApiException.notFound("Booking not found with id: " + bookingId));
+        if (!"ADMIN".equals(role) && !booking.getCustomerId().equals(userId)) {
+            throw ApiException.forbidden("You are not allowed to view this booking");
+        }
+        return BookingResponse.from(booking);
+    }
+
     @Transactional
     public BookingResponse create(Long customerId, CreateBookingRequest request) {
         Map<String, ShowtimeResponse> showtimeCache = new HashMap<>();
