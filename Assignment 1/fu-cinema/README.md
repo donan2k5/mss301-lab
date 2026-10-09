@@ -1,33 +1,33 @@
-# FUCinema Booking System — MSS301 Assignment 1
+# FUCinema Booking System - MSS301 Assignment 1
 
-This project contains three Spring Boot services and an API Gateway:
+Dự án gồm ba Spring Boot service và một API Gateway:
 
-| Application | Port | Database |
+| Thành phần | Cổng | Database |
 |---|---:|---|
 | Customer Service | 8081 | SQL Server (`cinema_customer`) |
 | Movie Service | 8082 | MongoDB (`cinema_movie`) |
 | Booking Service | 8083 | MySQL (`cinema_booking`) |
-| API Gateway | 9000 | Routes requests to the services |
+| API Gateway | 9000 | Định tuyến request đến các service |
 
-## Requirements
+## Yêu cầu
 
 - JDK 21
-- Maven 3.9 or later
+- Maven 3.9 trở lên
 - Docker Desktop
-- Postman Desktop (for API integration tests)
+- Postman Desktop để kiểm thử API
 
-## Run the application
+## Chạy hệ thống
 
-Run these commands from the `mss301-lab` repository root.
+Chạy các lệnh dưới đây tại thư mục gốc repository `mss301-lab`.
 
-Start the databases and check their status:
+Khởi động database và kiểm tra trạng thái:
 
 ```powershell
 docker compose -f "Assignment 1/fu-cinema/docker-compose.yml" up -d
 docker compose -f "Assignment 1/fu-cinema/docker-compose.yml" ps -a
 ```
 
-Start each application in a separate terminal:
+Khởi động từng ứng dụng trong một terminal riêng:
 
 ```powershell
 mvn -f "Assignment 1/fu-cinema/customer-service/pom.xml" spring-boot:run
@@ -45,24 +45,24 @@ mvn -f "Assignment 1/fu-cinema/booking-service/pom.xml" spring-boot:run
 mvn -f "Assignment 1/fu-cinema/api-gateway/pom.xml" spring-boot:run
 ```
 
-The Postman requests go through the Gateway at `http://localhost:9000`. Check that it is ready at <http://localhost:9000/actuator/health>.
+Các request Postman đi qua Gateway tại `http://localhost:9000`. Kiểm tra Gateway sẵn sàng tại <http://localhost:9000/actuator/health>.
 
-## Test accounts
+## Tài khoản kiểm thử
 
-| Role | Email | Password | Status |
+| Vai trò | Email | Mật khẩu | Trạng thái |
 |---|---|---|---|
-| Admin | `admin@fucinema.com` | `@@abc123@@` | Admin account |
-| Customer | `an@gmail.com` | `123456` | Active |
-| Customer | `binh@gmail.com` | `123456` | Active |
-| Customer | `chi@gmail.com` | `123456` | Inactive; login returns 403 |
+| Admin | `admin@fucinema.com` | `@@abc123@@` | Tài khoản quản trị |
+| Customer | `an@gmail.com` | `123456` | Hoạt động |
+| Customer | `binh@gmail.com` | `123456` | Hoạt động |
+| Customer | `chi@gmail.com` | `123456` | Không hoạt động; đăng nhập trả về 403 |
 
-## Postman integration test
+## Kiểm thử tích hợp bằng Postman
 
-Import `postman/FUCinemaBookingSystem.postman_collection.json` and `postman/FUCinema-Local.postman_environment.json`. Select the `FUCinema-Local` environment, then run the full collection in order.
+Import `postman/FUCinemaBookingSystem.postman_collection.json` và `postman/FUCinema-Local.postman_environment.json`. Chọn environment `FUCinema-Local`, sau đó chạy toàn bộ collection theo thứ tự.
 
-The collection creates test customers, movies, showtimes, and bookings in the local databases. It also updates a customer profile and cancels test bookings.
+Collection tạo customer, movie, showtime và booking kiểm thử trong các database local. Collection cũng cập nhật hồ sơ customer và hủy một số booking kiểm thử.
 
-## Assignment files
+## Tài liệu bài tập
 
-- [Detailed implementation and Postman guide](docs/Assignment1_Guide.md)
-- [Assignment report](docs/TuPhucNguyen-assignment1.docx)
+- [Hướng dẫn chạy kiểm thử Postman](docs/POSTMAN_TEST_GUIDE.md)
+- [Báo cáo Assignment 1](docs/TuPhucNguyen-assignment1.docx)
