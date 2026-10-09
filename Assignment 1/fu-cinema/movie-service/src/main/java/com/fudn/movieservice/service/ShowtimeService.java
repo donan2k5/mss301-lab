@@ -48,6 +48,12 @@ public class ShowtimeService {
         return apply(showtime, request, id);
     }
 
+    public ShowtimeResponse getById(String id) {
+        Showtime showtime = find(id);
+        return ShowtimeResponse.from(showtime,
+                movieService.find(showtime.getMovieId()), roomService.find(showtime.getRoomId()));
+    }
+
     public List<ShowtimeResponse> search(String movieId, LocalDate date) {
         List<Showtime> showtimes = (movieId == null || movieId.isBlank())
                 ? showtimeRepository.findAllByOrderByStartTimeAsc()
