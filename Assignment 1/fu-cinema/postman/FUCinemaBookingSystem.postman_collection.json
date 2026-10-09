@@ -20,7 +20,16 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/auth/login"
+              "raw": "{{gateway}}/api/auth/login",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -61,7 +70,16 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/auth/login"
+              "raw": "{{gateway}}/api/auth/login",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -102,7 +120,16 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/auth/login"
+              "raw": "{{gateway}}/api/auth/login",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -143,7 +170,16 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/auth/login"
+              "raw": "{{gateway}}/api/auth/login",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -184,7 +220,16 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/auth/login"
+              "raw": "{{gateway}}/api/auth/login",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -220,7 +265,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/customers/me"
+              "raw": "{{gateway}}/api/customers/me",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "me"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -246,7 +300,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/customers/me"
+              "raw": "{{gateway}}/api/customers/me",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "me"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -289,14 +352,23 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/customers/register"
+              "raw": "{{gateway}}/api/customers/register",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "register"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"customerName\": \"Ph?m Th? Dung\",\n  \"telephone\": \"0987654321\",\n  \"email\": \"{{newEmail}}\",\n  \"customerBirthday\": \"2004-03-15\",\n  \"password\": \"123456\"\n}",
+              "raw": "{\n  \"customerName\": \"Phạm Thị Dung\",\n  \"telephone\": \"0987654321\",\n  \"email\": \"{{newEmail}}\",\n  \"customerBirthday\": \"2004-03-15\",\n  \"password\": \"123456\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -339,14 +411,23 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/customers/register"
+              "raw": "{{gateway}}/api/customers/register",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "register"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"customerName\": \"Ph?m Th? Dung\",\n  \"telephone\": \"0987654321\",\n  \"email\": \"an@gmail.com\",\n  \"customerBirthday\": \"2004-03-15\",\n  \"password\": \"123456\"\n}",
+              "raw": "{\n  \"customerName\": \"Phạm Thị Dung\",\n  \"telephone\": \"0987654321\",\n  \"email\": \"an@gmail.com\",\n  \"customerBirthday\": \"2004-03-15\",\n  \"password\": \"123456\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -379,7 +460,16 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/customers/register"
+              "raw": "{{gateway}}/api/customers/register",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "register"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -413,12 +503,35 @@
           "name": "2.4 POST /api/auth/login",
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "url": {
-              "raw": "{{gateway}}/api/auth/login"
+              "raw": "{{gateway}}/api/auth/login",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{newEmail}}\",\n  \"password\": \"123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             }
           },
           "response": [],
@@ -442,7 +555,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/customers/me"
+              "raw": "{{gateway}}/api/customers/me",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "me"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -481,7 +603,16 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/customers/me"
+              "raw": "{{gateway}}/api/customers/me",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "me"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -495,7 +626,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"customerName\": \"Nguy?n V?n An (updated)\",\n  \"telephone\": \"0905999999\",\n  \"customerBirthday\": \"2002-05-10\"\n}",
+              "raw": "{\n  \"customerName\": \"Nguyễn Văn An (updated)\",\n  \"telephone\": \"0905999999\",\n  \"customerBirthday\": \"2002-05-10\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -511,7 +642,7 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Expected HTTP 200\", () => pm.response.to.have.status(200));",
-                  "const j=pm.response.json(); pm.test(\"Profile updated\",()=>{pm.expect(j.customerName).to.eql(\"Nguy?n V?n An (updated)\");pm.expect(j.telephone).to.eql(\"0905999999\");});"
+                  "const j=pm.response.json(); pm.test(\"Profile updated\",()=>{pm.expect(j.customerName).to.eql(\"Nguyễn Văn An (updated)\");pm.expect(j.telephone).to.eql(\"0905999999\");});"
                 ]
               }
             }
@@ -529,7 +660,17 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/customers/me/password"
+              "raw": "{{gateway}}/api/customers/me/password",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "me",
+                "password"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -576,7 +717,17 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/customers/me/password"
+              "raw": "{{gateway}}/api/customers/me/password",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "me",
+                "password"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -616,12 +767,35 @@
           "name": "2.9 POST /api/auth/login",
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "url": {
-              "raw": "{{gateway}}/api/auth/login"
+              "raw": "{{gateway}}/api/auth/login",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{newEmail}}\",\n  \"password\": \"654321\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             }
           },
           "response": [],
@@ -645,7 +819,15 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/customers"
+              "raw": "{{gateway}}/api/customers",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -678,7 +860,20 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/customers?keyword=gmail"
+              "raw": "{{gateway}}/api/customers?keyword=gmail",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "gmail"
+                }
+              ]
             },
             "auth": {
               "type": "bearer",
@@ -712,7 +907,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/customers/99999"
+              "raw": "{{gateway}}/api/customers/99999",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "99999"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -750,7 +954,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/customers"
+              "raw": "{{gateway}}/api/customers",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -764,7 +976,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"customerName\": \"Kh?ch h?ng do Admin t?o\",\n  \"telephone\": \"0911222333\",\n  \"email\": \"{{adminEmail2}}\",\n  \"customerBirthday\": \"1999-09-09\",\n  \"customerStatus\": \"ACTIVE\",\n  \"password\": \"123456\"\n}",
+              "raw": "{\n  \"customerName\": \"Khách hàng do Admin tạo\",\n  \"telephone\": \"0911222333\",\n  \"email\": \"{{adminEmail2}}\",\n  \"customerBirthday\": \"1999-09-09\",\n  \"customerStatus\": \"ACTIVE\",\n  \"password\": \"123456\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -807,7 +1019,16 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/customers/{{adminCreatedId}}"
+              "raw": "{{gateway}}/api/customers/{{adminCreatedId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "{{adminCreatedId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -821,7 +1042,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"customerName\": \"Kh?ch h?ng do Admin t?o (updated)\",\n  \"telephone\": \"0911222333\",\n  \"email\": \"{{adminEmail2}}\",\n  \"customerBirthday\": \"1999-09-09\",\n  \"customerStatus\": \"ACTIVE\"\n}",
+              "raw": "{\n  \"customerName\": \"Khách hàng do Admin tạo (updated)\",\n  \"telephone\": \"0911222333\",\n  \"email\": \"{{adminEmail2}}\",\n  \"customerBirthday\": \"1999-09-09\",\n  \"customerStatus\": \"ACTIVE\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -849,7 +1070,16 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/customers/{{adminCreatedId}}"
+              "raw": "{{gateway}}/api/customers/{{adminCreatedId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "{{adminCreatedId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -882,7 +1112,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/customers/{{adminCreatedId}}"
+              "raw": "{{gateway}}/api/customers/{{adminCreatedId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "{{adminCreatedId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -916,7 +1155,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/customers/me"
+              "raw": "{{gateway}}/api/customers/me",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "me"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -954,7 +1202,16 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/customers/me"
+              "raw": "{{gateway}}/api/customers/me",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "me"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -993,7 +1250,15 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/genres"
+              "raw": "{{gateway}}/api/genres",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "genres"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -1025,7 +1290,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/genres"
+              "raw": "{{gateway}}/api/genres",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "genres"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1039,7 +1312,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"genreName\": \"T?i li?u {{$timestamp}}\",\n  \"description\": \"Phim t?i li?u\"\n}",
+              "raw": "{\n  \"genreName\": \"Tài liệu {{$timestamp}}\",\n  \"description\": \"Phim tài liệu\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1073,7 +1346,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/genres"
+              "raw": "{{gateway}}/api/genres",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "genres"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1087,7 +1368,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"genreName\": \"T?i li?u {{$timestamp}}\",\n  \"description\": \"Phim t?i li?u\"\n}",
+              "raw": "{\n  \"genreName\": \"Tài liệu {{$timestamp}}\",\n  \"description\": \"Phim tài liệu\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1120,7 +1401,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/genres"
+              "raw": "{{gateway}}/api/genres",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "genres"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1134,7 +1423,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"genreName\": \"H?nh ??ng\"\n}",
+              "raw": "{\n  \"genreName\": \"Hành động\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1167,7 +1456,16 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/genres/{{genreId}}"
+              "raw": "{{gateway}}/api/genres/{{genreId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "genres",
+                "{{genreId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1181,7 +1479,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"genreName\": \"T?i li?u {{$timestamp}}\",\n  \"description\": \"?? c?p nh?t\"\n}",
+              "raw": "{\n  \"genreName\": \"Tài liệu {{$timestamp}}\",\n  \"description\": \"Đã cập nhật\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1204,12 +1502,21 @@
           "description": "Expected: **200**"
         },
         {
-          "name": "3.6 DELETE /api/genres/{{seedGenreActionId}}",
+          "name": "3.6 DELETE /api/genres/{{seedGenreScifiId}}",
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/genres/{{seedGenreActionId}}"
+              "raw": "{{gateway}}/api/genres/{{seedGenreScifiId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "genres",
+                "{{seedGenreScifiId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1247,7 +1554,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/rooms"
+              "raw": "{{gateway}}/api/rooms",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "rooms"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1290,7 +1605,15 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/rooms"
+              "raw": "{{gateway}}/api/rooms",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "rooms"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -1321,7 +1644,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/rooms"
+              "raw": "{{gateway}}/api/rooms",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "rooms"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1368,7 +1699,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/rooms"
+              "raw": "{{gateway}}/api/rooms",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "rooms"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1420,7 +1759,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/movies"
+              "raw": "{{gateway}}/api/movies",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "movies"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1434,7 +1781,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"H?nh Tr?nh Ph??ng Nam\",\n  \"description\": \"Phim t?i li?u v? mi?n T?y s?ng n??c.\",\n  \"director\": \"L? Ho?ng\",\n  \"durationMinutes\": 120,\n  \"language\": \"Ti?ng Vi?t\",\n  \"ageRating\": \"P\",\n  \"releaseDate\": \"2026-10-01\",\n  \"genreId\": \"{{genreId}}\",\n  \"movieStatus\": \"NOW_SHOWING\"\n}",
+              "raw": "{\n  \"title\": \"Hành Trình Phương Nam\",\n  \"description\": \"Phim tài liệu về miền Tây sông nước.\",\n  \"director\": \"Lê Hoàng\",\n  \"durationMinutes\": 120,\n  \"language\": \"Tiếng Việt\",\n  \"ageRating\": \"P\",\n  \"releaseDate\": \"2026-10-01\",\n  \"genreId\": \"{{genreId}}\",\n  \"movieStatus\": \"NOW_SHOWING\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1463,7 +1810,20 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/movies?keyword=galaxy"
+              "raw": "{{gateway}}/api/movies?keyword=galaxy",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "movies"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "galaxy"
+                }
+              ]
             },
             "auth": {
               "type": "noauth"
@@ -1490,7 +1850,24 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/movies?status=NOW_SHOWING&genreId={{seedGenreScifiId}}"
+              "raw": "{{gateway}}/api/movies?status=NOW_SHOWING&genreId={{seedGenreScifiId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "movies"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "NOW_SHOWING"
+                },
+                {
+                  "key": "genreId",
+                  "value": "{{seedGenreScifiId}}"
+                }
+              ]
             },
             "auth": {
               "type": "noauth"
@@ -1522,7 +1899,16 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/movies/{{movieId}}"
+              "raw": "{{gateway}}/api/movies/{{movieId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "movies",
+                "{{movieId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1536,7 +1922,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"H?nh Tr?nh Ph??ng Nam\",\n  \"description\": \"Phim t?i li?u v? mi?n T?y s?ng n??c.\",\n  \"director\": \"L? Ho?ng\",\n  \"durationMinutes\": 120,\n  \"language\": \"Ti?ng Vi?t\",\n  \"ageRating\": \"P\",\n  \"releaseDate\": \"2026-10-01\",\n  \"genreId\": \"{{genreId}}\",\n  \"movieStatus\": \"NOW_SHOWING\"\n}",
+              "raw": "{\n  \"title\": \"Hành Trình Phương Nam\",\n  \"description\": \"Phim tài liệu về miền Tây sông nước.\",\n  \"director\": \"Lê Hoàng\",\n  \"durationMinutes\": 120,\n  \"language\": \"Tiếng Việt\",\n  \"ageRating\": \"P\",\n  \"releaseDate\": \"2026-10-01\",\n  \"genreId\": \"{{genreId}}\",\n  \"movieStatus\": \"NOW_SHOWING\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1552,7 +1938,7 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Expected HTTP 200\", () => pm.response.to.have.status(200));",
-                  "pm.test(\"Language updated\",()=>pm.expect(pm.response.json().language).to.eql(\"Ti?ng Vi?t\"));"
+                  "pm.test(\"Language updated\",()=>pm.expect(pm.response.json().language).to.eql(\"Tiếng Việt\"));"
                 ]
               }
             }
@@ -1565,7 +1951,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/movies/{{notFoundId}}"
+              "raw": "{{gateway}}/api/movies/{{notFoundId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "movies",
+                "{{notFoundId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -1596,7 +1991,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/movies"
+              "raw": "{{gateway}}/api/movies",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "movies"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1610,7 +2013,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"H?nh Tr?nh Ph??ng Nam\",\n  \"description\": \"Phim t?i li?u v? mi?n T?y s?ng n??c.\",\n  \"director\": \"L? Ho?ng\",\n  \"durationMinutes\": 10,\n  \"language\": \"Ti?ng Vi?t\",\n  \"ageRating\": \"P\",\n  \"releaseDate\": \"2026-10-01\",\n  \"genreId\": \"{{genreId}}\",\n  \"movieStatus\": \"NOW_SHOWING\"\n}",
+              "raw": "{\n  \"title\": \"Hành Trình Phương Nam\",\n  \"description\": \"Phim tài liệu về miền Tây sông nước.\",\n  \"director\": \"Lê Hoàng\",\n  \"durationMinutes\": 10,\n  \"language\": \"Tiếng Việt\",\n  \"ageRating\": \"P\",\n  \"releaseDate\": \"2026-10-01\",\n  \"genreId\": \"{{genreId}}\",\n  \"movieStatus\": \"NOW_SHOWING\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1643,7 +2046,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/movies"
+              "raw": "{{gateway}}/api/movies",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "movies"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1657,7 +2068,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"H?nh Tr?nh Ph??ng Nam\",\n  \"description\": \"Phim t?i li?u v? mi?n T?y s?ng n??c.\",\n  \"director\": \"L? Ho?ng\",\n  \"durationMinutes\": 120,\n  \"language\": \"Ti?ng Vi?t\",\n  \"ageRating\": \"P\",\n  \"releaseDate\": \"2026-10-01\",\n  \"genreId\": \"{{notFoundId}}\",\n  \"movieStatus\": \"NOW_SHOWING\"\n}",
+              "raw": "{\n  \"title\": \"Hành Trình Phương Nam\",\n  \"description\": \"Phim tài liệu về miền Tây sông nước.\",\n  \"director\": \"Lê Hoàng\",\n  \"durationMinutes\": 120,\n  \"language\": \"Tiếng Việt\",\n  \"ageRating\": \"P\",\n  \"releaseDate\": \"2026-10-01\",\n  \"genreId\": \"{{notFoundId}}\",\n  \"movieStatus\": \"NOW_SHOWING\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1685,7 +2096,16 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/genres/{{genreId}}"
+              "raw": "{{gateway}}/api/genres/{{genreId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "genres",
+                "{{genreId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1728,7 +2148,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/showtimes"
+              "raw": "{{gateway}}/api/showtimes",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "showtimes"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1785,7 +2213,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/showtimes"
+              "raw": "{{gateway}}/api/showtimes",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "showtimes"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1832,7 +2268,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/showtimes"
+              "raw": "{{gateway}}/api/showtimes",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "showtimes"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1880,7 +2324,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/showtimes"
+              "raw": "{{gateway}}/api/showtimes",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "showtimes"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1927,7 +2379,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/showtimes"
+              "raw": "{{gateway}}/api/showtimes",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "showtimes"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -1974,7 +2434,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/showtimes"
+              "raw": "{{gateway}}/api/showtimes",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "showtimes"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2016,7 +2484,24 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/showtimes?movieId={{movieId}}&date={{futureDate}}"
+              "raw": "{{gateway}}/api/showtimes?movieId={{movieId}}&date={{futureDate}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "showtimes"
+              ],
+              "query": [
+                {
+                  "key": "movieId",
+                  "value": "{{movieId}}"
+                },
+                {
+                  "key": "date",
+                  "value": "{{futureDate}}"
+                }
+              ]
             },
             "auth": {
               "type": "noauth"
@@ -2043,7 +2528,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/showtimes/{{showtimeId}}"
+              "raw": "{{gateway}}/api/showtimes/{{showtimeId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "showtimes",
+                "{{showtimeId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -2070,7 +2564,16 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/showtimes/{{showtime2Id}}"
+              "raw": "{{gateway}}/api/showtimes/{{showtime2Id}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "showtimes",
+                "{{showtime2Id}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2103,7 +2606,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/showtimes/{{showtime2Id}}"
+              "raw": "{{gateway}}/api/showtimes/{{showtime2Id}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "showtimes",
+                "{{showtime2Id}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -2130,7 +2642,16 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/rooms/{{roomId}}"
+              "raw": "{{gateway}}/api/rooms/{{roomId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "rooms",
+                "{{roomId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2163,7 +2684,16 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/movies/{{movieId}}"
+              "raw": "{{gateway}}/api/movies/{{movieId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "movies",
+                "{{movieId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2201,7 +2731,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/showtimes"
+              "raw": "{{gateway}}/api/showtimes",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "showtimes"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2248,7 +2786,18 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/showtimes/{{showtimeId}}/seats"
+              "raw": "{{gateway}}/api/bookings/showtimes/{{showtimeId}}/seats",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "showtimes",
+                "{{showtimeId}}",
+                "seats"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -2280,7 +2829,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2310,7 +2867,7 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Expected HTTP 201\", () => pm.response.to.have.status(201));",
-                  "const b=pm.response.json(); pm.expect(b.bookingStatus).to.eql(\"CONFIRMED\"); pm.expect(b.details).to.have.lengthOf(2); const sum=b.details.reduce((a,d)=>a+Number(d.price),0); pm.expect(Number(b.totalPrice)).to.eql(sum); pm.expect(Number(b.totalPrice)).to.eql(190000); pm.expect(b.details[0].movieTitle).to.eql(\"H?nh Tr?nh Ph??ng Nam\"); pm.environment.set(\"bookingId\",b.bookingId);"
+                  "const b=pm.response.json(); pm.expect(b.bookingStatus).to.eql(\"CONFIRMED\"); pm.expect(b.details).to.have.lengthOf(2); const sum=b.details.reduce((a,d)=>a+Number(d.price),0); pm.expect(Number(b.totalPrice)).to.eql(sum); pm.expect(Number(b.totalPrice)).to.eql(190000); pm.expect(b.details[0].movieTitle).to.eql(\"Hành Trình Phương Nam\"); pm.environment.set(\"bookingId\",b.bookingId);"
                 ]
               }
             }
@@ -2328,7 +2885,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2376,7 +2941,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2423,7 +2996,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2470,7 +3051,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2517,7 +3106,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2564,7 +3161,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2611,7 +3216,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2658,7 +3271,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2705,7 +3326,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2752,7 +3381,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -2792,7 +3429,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2835,7 +3480,18 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/showtimes/{{showtimeId}}/seats"
+              "raw": "{{gateway}}/api/bookings/showtimes/{{showtimeId}}/seats",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "showtimes",
+                "{{showtimeId}}",
+                "seats"
+              ],
+              "query": []
             },
             "auth": {
               "type": "noauth"
@@ -2867,7 +3523,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/my"
+              "raw": "{{gateway}}/api/bookings/my",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "my"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2901,7 +3566,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/{{bookingId}}"
+              "raw": "{{gateway}}/api/bookings/{{bookingId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "{{bookingId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2934,7 +3608,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/{{bookingId}}"
+              "raw": "{{gateway}}/api/bookings/{{bookingId}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "{{bookingId}}"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -2967,7 +3650,17 @@
             "method": "PUT",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/{{booking2Id}}/cancel"
+              "raw": "{{gateway}}/api/bookings/{{booking2Id}}/cancel",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "{{booking2Id}}",
+                "cancel"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -3000,7 +3693,17 @@
             "method": "PUT",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/{{booking2Id}}/cancel"
+              "raw": "{{gateway}}/api/bookings/{{booking2Id}}/cancel",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "{{booking2Id}}",
+                "cancel"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -3034,7 +3737,17 @@
             "method": "PUT",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/{{booking2Id}}/cancel"
+              "raw": "{{gateway}}/api/bookings/{{booking2Id}}/cancel",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "{{booking2Id}}",
+                "cancel"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -3072,7 +3785,15 @@
               }
             ],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -3115,7 +3836,15 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings"
+              "raw": "{{gateway}}/api/bookings",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -3148,7 +3877,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/my"
+              "raw": "{{gateway}}/api/bookings/my",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "my"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -3181,7 +3919,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/99999"
+              "raw": "{{gateway}}/api/bookings/99999",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "99999"
+              ],
+              "query": []
             },
             "auth": {
               "type": "bearer",
@@ -3219,7 +3966,25 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/report?startDate={{today}}&endDate={{today}}"
+              "raw": "{{gateway}}/api/bookings/report?startDate={{today}}&endDate={{today}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "report"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "{{today}}"
+                },
+                {
+                  "key": "endDate",
+                  "value": "{{today}}"
+                }
+              ]
             },
             "auth": {
               "type": "bearer",
@@ -3262,7 +4027,25 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/report?startDate=2026-12-31&endDate=2026-01-01"
+              "raw": "{{gateway}}/api/bookings/report?startDate=2026-12-31&endDate=2026-01-01",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "report"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2026-12-31"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-01-01"
+                }
+              ]
             },
             "auth": {
               "type": "bearer",
@@ -3295,7 +4078,25 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/report?startDate={{today}}&endDate={{today}}"
+              "raw": "{{gateway}}/api/bookings/report?startDate={{today}}&endDate={{today}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "report"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "{{today}}"
+                },
+                {
+                  "key": "endDate",
+                  "value": "{{today}}"
+                }
+              ]
             },
             "auth": {
               "type": "bearer",
@@ -3328,7 +4129,21 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/report?startDate={{today}}"
+              "raw": "{{gateway}}/api/bookings/report?startDate={{today}}",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "report"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "{{today}}"
+                }
+              ]
             },
             "auth": {
               "type": "bearer",
@@ -3361,7 +4176,25 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{gateway}}/api/bookings/report?startDate=2020-01-01&endDate=2020-01-31"
+              "raw": "{{gateway}}/api/bookings/report?startDate=2020-01-01&endDate=2020-01-31",
+              "host": [
+                "{{gateway}}"
+              ],
+              "path": [
+                "api",
+                "bookings",
+                "report"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2020-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2020-01-31"
+                }
+              ]
             },
             "auth": {
               "type": "bearer",
