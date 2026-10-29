@@ -3,7 +3,7 @@ package fu.de190060.post.entity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "posts")
@@ -23,12 +23,13 @@ public class Post {
     @Column(name = "advertiser_phone", nullable = false, length = 20)
     private String advertiserPhone;
 
-    // LocalDate maps the SQL DATE column without any time zone shift
+    @Temporal(TemporalType.DATE)
     @Column(name = "start_date", nullable = false)
-    private LocalDate startDate;
+    private Date startDate;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "end_date", nullable = false)
-    private LocalDate endDate;
+    private Date endDate;
 
     @Column(name = "number_of_posts", nullable = false)
     private int numberOfPosts;
@@ -52,10 +53,10 @@ public class Post {
     public void setAdvertiserEmail(String advertiserEmail) { this.advertiserEmail = advertiserEmail; }
     public String getAdvertiserPhone() { return advertiserPhone; }
     public void setAdvertiserPhone(String advertiserPhone) { this.advertiserPhone = advertiserPhone; }
-    public LocalDate getStartDate() { return startDate; }
-    public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
-    public LocalDate getEndDate() { return endDate; }
-    public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
+    public Date getStartDate() { return startDate; }
+    public void setStartDate(Date startDate) { this.startDate = startDate; }
+    public Date getEndDate() { return endDate; }
+    public void setEndDate(Date endDate) { this.endDate = endDate; }
     public int getNumberOfPosts() { return numberOfPosts; }
     public void setNumberOfPosts(int numberOfPosts) { this.numberOfPosts = numberOfPosts; }
     public BigDecimal getTotalCost() { return totalCost; }

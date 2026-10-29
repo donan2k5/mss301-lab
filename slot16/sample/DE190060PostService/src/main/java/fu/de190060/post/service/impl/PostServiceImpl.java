@@ -20,7 +20,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
@@ -66,8 +68,8 @@ public class PostServiceImpl implements PostService {
         post.setAdvertiserName(dto.getAdvertiserName());
         post.setAdvertiserEmail(dto.getAdvertiserEmail());
         post.setAdvertiserPhone(dto.getAdvertiserPhone());
-        post.setStartDate(startDate);
-        post.setEndDate(endDate);
+        post.setStartDate(toEntityDate(startDate));
+        post.setEndDate(toEntityDate(endDate));
         post.setNumberOfPosts(dto.getNumberOfPosts());
         post.setUserId(dto.getUserId());
         post.setTotalCost(computeTotal(user.getRatePerPost(), startDate, endDate));
@@ -87,8 +89,10 @@ public class PostServiceImpl implements PostService {
 
         // Validate the EFFECTIVE values before touching the managed entity; mutating it first
         // and returning early would still let dirty-checking flush the bad values on commit.
-        LocalDate start = dto.getStartDate() != null ? toLocalDate(dto.getStartDate()) : post.getStartDate();
-        LocalDate end = dto.getEndDate() != null ? toLocalDate(dto.getEndDate()) : post.getEndDate();
+        LocalDate start = dto.getStartDate() != null
+                ? toLocalDate(dto.getStartDate()) : fromEntityDate(post.getStartDate());
+        LocalDate end = dto.getEndDate() != null
+                ? toLocalDate(dto.getEndDate()) : fromEntityDate(post.getEndDate());
         if (!end.isAfter(start)) {
             return ApiResponse.error(2, "endDate must be after startDate");
         }
@@ -112,8 +116,8 @@ public class PostServiceImpl implements PostService {
         if (dto.getAdvertiserEmail() != null) post.setAdvertiserEmail(dto.getAdvertiserEmail());
         if (dto.getAdvertiserPhone() != null) post.setAdvertiserPhone(dto.getAdvertiserPhone());
         if (dto.getStatus() != null) post.setStatus(PostStatus.valueOf(dto.getStatus()));
-        post.setStartDate(start);
-        post.setEndDate(end);
+        post.setStartDate(toEntityDate(start));
+        post.setEndDate(toEntityDate(end));
         post.setNumberOfPosts(numberOfPosts);
         post.setUserId(userId);
         // Recalculate with the user's current rate
@@ -200,14 +204,25 @@ public class PostServiceImpl implements PostService {
         return ratePerPost.multiply(BigDecimal.valueOf(days));
     }
 
-    // Request dates (dd/MM/yyyy) are parsed and written by Jackson in UTC, so convert in UTC both ways;
-    // the result never depends on the JVM time zone.
-    private LocalDate toLocalDate(Date date) {
-        return date.toInstant().atZone(ZoneOffset.UTC).toLocalDate();
+    // Two different "midnight" conventions meet here, so every date goes through a LocalDate:
+    //  - DTO side: Jackson parses and writes dd/MM/yyyy at UTC midnight
+    //  - Entity side: Hibernate maps java.util.Date <-> SQL DATE at the JVM default time zone midnight
+    // Converting through LocalDate keeps the calendar day intact whatever the JVM time zone is.
+    private LocalDate toLocalDate(Date dtoDate) {
+        return dtoDate.toInstant().atZone(ZoneOffset.UTC).toLocalDate();
     }
 
     private Date toDate(LocalDate date) {
         return Date.from(date.atStartOfDay(ZoneOffset.UTC).toInstant());
+    }
+
+    private LocalDate fromEntityDate(Date entityDate) {
+        // Hibernate returns java.sql.Date, whose toInstant() is unsupported: go through epoch millis
+        return Instant.ofEpochMilli(entityDate.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    private Date toEntityDate(LocalDate date) {
+        return Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 
     private PostDTO toDTO(Post p) {
@@ -216,8 +231,8 @@ public class PostServiceImpl implements PostService {
         d.setAdvertiserName(p.getAdvertiserName());
         d.setAdvertiserEmail(p.getAdvertiserEmail());
         d.setAdvertiserPhone(p.getAdvertiserPhone());
-        d.setStartDate(toDate(p.getStartDate()));
-        d.setEndDate(toDate(p.getEndDate()));
+        d.setStartDate(toDate(fromEntityDate(p.getStartDate())));
+        d.setEndDate(toDate(fromEntityDate(p.getEndDate())));
         d.setNumberOfPosts(p.getNumberOfPosts());
         d.setTotalCost(p.getTotalCost());
         d.setStatus(p.getStatus().name());
@@ -231,8 +246,8 @@ public class PostServiceImpl implements PostService {
         d.setAdvertiserName(p.getAdvertiserName());
         d.setAdvertiserEmail(p.getAdvertiserEmail());
         d.setAdvertiserPhone(p.getAdvertiserPhone());
-        d.setStartDate(toDate(p.getStartDate()));
-        d.setEndDate(toDate(p.getEndDate()));
+        d.setStartDate(toDate(fromEntityDate(p.getStartDate())));
+        d.setEndDate(toDate(fromEntityDate(p.getEndDate())));
         d.setNumberOfPosts(p.getNumberOfPosts());
         d.setTotalCost(p.getTotalCost());
         d.setStatus(p.getStatus().name());
