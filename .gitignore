@@ -40,3 +40,8 @@ CLAUDE.md
 
 ### MySQL bind-mount data volume (generated, local-only) ###
 **/docker/mysql/data/
+
+### slot16 exam materials (local-only) ###
+slot16/de-thi-su26/
+slot16/grading/
+slot16/_zip-goc/
