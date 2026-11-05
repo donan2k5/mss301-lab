@@ -1,0 +1,7 @@
+# Maven, IDE and local secrets
+target/
+.idea/
+.vscode/
+*.iml
+*.log
+.env
